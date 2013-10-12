@@ -1,10 +1,15 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[11pt,twoside,a4paper]{article}
 
 %========== PACKAGES ==========%
 
-\usepackage{listings}
-\usepackage{color}
-\usepackage{mips}
+\usepackage{a4wide}				% for a wider layout
+\usepackage{listings}			% for code examples
+\usepackage{color}				% for color declarations
+\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}		% for UTF-8 encoding
+\usepackage{lipsum}
+\usepackage{mips}				% for MIPS syntax highlighting
+\usepackage{multicol}			% for multicolumn layouts
 
 
 %========== DEFINITIONS ==========%
@@ -35,6 +40,7 @@
 
 \title
 {
+	\vspace{0.0in}	% if more space is needed for abstract/toc adjust this
 	Machine Architecture\\
 	\Large Assignment 2
 }
@@ -44,25 +50,47 @@
 	Casper B. Hansen\\
 	University of Copenhagen\\
 	Department of Computer Science\\
-	{\tt fvx507@alumni.ku.dk} \\
+	{\tt fvx507@alumni.ku.dk}
+	\and
 	Sine Vestergård Jensen\\
 	University of Copenhagen\\
 	Department of Computer Science\\
 	{\tt kms698@alumni.ku.dk}
+	\and
 	Nikolaj Høyer\\
 	University of Copenhagen\\
 	Department of Computer Science\\
-	{\tt ctl533@alumni.ku.dk}	
+	{\tt ctl533@alumni.ku.dk}
 }
 
+\date{\today}
 
 %========== DOCUMENT ==========%
 
 \begin{document}
 
+\clearpage
 \maketitle
+\thispagestyle{empty}
+\hrule
+\vspace{0.5in}	% spacing between title/authors and abstract/toc
+\begin{multicols}{2}
+\begin{abstract}
+\lipsum[1]	% todo: write an abstract
+\end{abstract}
+\vfill
+\columnbreak
+\tableofcontents
+\end{multicols}
 
-\section*{...}
+\newpage
+\pagestyle{fancy}
+\section{Introduction}
+...
+
+\newpage
+\pagestyle{fancy}
+\section{Preliminary design}
 ...
 
 \end{document}
