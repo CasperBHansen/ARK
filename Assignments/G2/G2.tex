@@ -101,30 +101,55 @@ Our pipeline is quite simple in nature, its instruction set
 \begin{figure}[H]
 	\begin{multicols}{2}
 	\center
+
+	\textbf{Arithmetic-logical} \\
+	\vspace{0.15in}
 	\begin{tabular}{|l|l|l|}
-		\hline {\bf Instruction} & {\bf \dots} & {\bf \dots} \\
-		\hline {\tt addu} & \dots & \dots \\
-		\hline {\tt addiu} & \dots & \dots \\
-		\hline {\tt slt} & \dots & \dots \\
-		\hline {\tt slti} & \dots & \dots \\
-		\hline {\tt subu} & \dots & \dots \\
-		\hline {\tt and} & \dots & \dots \\
-		\hline {\tt andi} & \dots & \dots \\
+		\hline
+		\scriptsize {\bf Mnemonic} &
+		\scriptsize {\bf \dots} &
+		\scriptsize {\bf Description} \\
+		\hline {\tt addu} & \dots & \scriptsize Add unsigned \\
+		\hline {\tt addiu} & \dots & \scriptsize Add immediate unsigned \\
+		\hline {\tt slt} & \dots & \scriptsize Set less than \\
+		\hline {\tt slti} & \dots & \scriptsize Set immediate less than \\
+		\hline {\tt subu} & \dots & \scriptsize Subtract unsigned \\
+		\hline {\tt and} & \dots & \scriptsize Logical AND \\
+		\hline {\tt andi} & \dots & \scriptsize Logical immediate AND \\
+		\hline {\tt or} & \dots & \scriptsize Logical OR \\
+		\hline {\tt ori} & \dots & \scriptsize Logical immediate OR \\
 		\hline
 	\end{tabular}
+	
 	\columnbreak
 	\center
+
+	\textbf{Memory-reference} \\
+	\vspace{0.15in}
 	\begin{tabular}{|l|l|l|}
-		\hline {\bf Instruction} & {\bf \dots} & {\bf \dots} \\
-		\hline {\tt or} & \dots & \dots \\
-		\hline {\tt ori} & \dots & \dots \\
-		\hline {\tt lw} & \dots & \dots \\
-		\hline {\tt sw} & \dots & \dots \\
-		\hline {\tt beq} & \dots & \dots \\
-		\hline {\tt jal} & \dots & \dots \\
-		\hline {\tt jr} & \dots & \dots \\
+		\hline
+		\scriptsize {\bf Mnemonic} &
+		\scriptsize {\bf \dots} &
+		\scriptsize {\bf Description} \\
+		\hline {\tt lw} & \dots & \scriptsize Load word \\
+		\hline {\tt sw} & \dots & \scriptsize Store word \\
 		\hline
 	\end{tabular}
+
+	\vspace{0.26in}
+	\textbf{Branching} \\
+	\vspace{0.15in}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\scriptsize {\bf Mnemonic} &
+		\scriptsize {\bf \dots} &
+		\scriptsize {\bf Description} \\
+		\hline {\tt beq} & \dots & \scriptsize Branch on equal \\
+		\hline {\tt jal} & \dots & \scriptsize Jump and link \\
+		\hline {\tt jr} & \dots & \scriptsize Jump to register \\
+		\hline
+	\end{tabular}
+
 	\end{multicols}
 	\caption{Instruction set}
 	\label{fig:instruction-set}
