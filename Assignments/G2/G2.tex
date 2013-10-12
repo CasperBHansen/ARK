@@ -6,6 +6,7 @@
 \usepackage{listings}			% for code examples
 \usepackage{color}				% for color declarations
 \usepackage{fancyhdr}
+\usepackage{float}				% for the [H] position specifier
 \usepackage[utf8]{inputenc}		% for UTF-8 encoding
 \usepackage{lipsum}
 \usepackage{mips}				% for MIPS syntax highlighting
@@ -18,6 +19,11 @@
 \definecolor{c_keyword}{rgb}	{0.10, 0.10, 0.81}
 \definecolor{c_identifier}{rgb}	{0.00, 0.00, 0.00}
 \definecolor{c_string}{rgb}		{0.50, 0.50, 0.50}
+
+
+%========== MACROS ==========%
+
+\newcommand{\figref[1]}{see Figure~\ref{#1}}	% use for referencing figures
 
 
 %========== SETTINGS ==========%
@@ -88,9 +94,48 @@
 \section{Introduction}
 ...
 
+\subsection{Instruction set}
+Our pipeline is quite simple in nature, its instruction set
+(\figref[fig:instruction-set]) consists of only 14 instructions.
+
+\begin{figure}[H]
+	\begin{multicols}{2}
+	\center
+	\begin{tabular}{|c|c|}
+		\hline {\tt addu} & \dots \\
+		\hline {\tt addiu} & \dots \\
+		\hline {\tt slt} & \dots \\
+		\hline {\tt slti} & \dots \\
+		\hline {\tt subu} & \dots \\
+		\hline {\tt and} & \dots \\
+		\hline {\tt andi} & \dots \\
+		\hline
+	\end{tabular}
+	\columnbreak
+	\center
+	\begin{tabular}{|c|c|}
+		\hline {\tt or} & \dots \\
+		\hline {\tt ori} & \dots \\
+		\hline {\tt lw} & \dots \\
+		\hline {\tt sw} & \dots \\
+		\hline {\tt beq} & \dots \\
+		\hline {\tt jal} & \dots \\
+		\hline {\tt jr} & \dots \\
+		\hline
+	\end{tabular}
+	\end{multicols}
+	\caption{Instruction set}
+	\label{fig:instruction-set}
+\end{figure}
+
 \newpage
 \pagestyle{fancy}
 \section{Preliminary design}
+...
+
+\newpage
+\pagestyle{fancy}
+\section{Tests}
 ...
 
 \end{document}
