@@ -104,20 +104,21 @@ Our pipeline is quite simple, its instruction set
 
 	\textbf{Arithmetic-logical} \\
 	\vspace{0.15in}
-	\begin{tabular}{|l|l|l|}
+	\begin{tabular}{|l|l|l|l|}
 		\hline
 		\scriptsize {\bf Mnemonic} &
+		\scriptsize {\bf Code} &
 		\scriptsize {\bf Type} &
 		\scriptsize {\bf Description} \\
-		\hline {\tt addu} & R & \scriptsize Add unsigned \\
-		\hline {\tt addiu} & I & \scriptsize Add immediate unsigned \\
-		\hline {\tt slt} & R & \scriptsize Set less than \\
-		\hline {\tt slti} & I & \scriptsize Set immediate less than \\
-		\hline {\tt subu} & R & \scriptsize Subtract unsigned \\
-		\hline {\tt and} & R & \scriptsize Logical AND \\
-		\hline {\tt andi} & I & \scriptsize Logical immediate AND \\
-		\hline {\tt or} & R & \scriptsize Logical OR \\
-		\hline {\tt ori} & I & \scriptsize Logical immediate OR \\
+		\hline {\tt addu} & {\tt 0x21} & {\tt R} & \scriptsize Add unsigned \\
+		\hline {\tt addiu} & {\tt 0x09} & {\tt I} & \scriptsize Add imm. unsigned \\
+		\hline {\tt slt} & {\tt 0x2A} & {\tt R} & \scriptsize Set less than \\
+		\hline {\tt slti} & {\tt 0x0A} & {\tt I} & \scriptsize Set imm. less than \\
+		\hline {\tt subu} & {\tt 0x23} & {\tt R} & \scriptsize Subtract unsigned \\
+		\hline {\tt and} & {\tt 0x24} & {\tt R} & \scriptsize Logical AND \\
+		\hline {\tt andi} & {\tt 0x0C} & {\tt I} & \scriptsize Logical imm. AND \\
+		\hline {\tt or} & {\tt 0x25} & {\tt R} & \scriptsize Logical OR \\
+		\hline {\tt ori} & {\tt 0x0D} & {\tt I} & \scriptsize Logical imm. OR \\
 		\hline
 	\end{tabular}
 	
@@ -126,27 +127,29 @@ Our pipeline is quite simple, its instruction set
 
 	\textbf{Memory-reference} \\
 	\vspace{0.15in}
-	\begin{tabular}{|l|l|l|}
+	\begin{tabular}{|l|l|l|l|}
 		\hline
 		\scriptsize {\bf Mnemonic} &
+		\scriptsize {\bf Code} &
 		\scriptsize {\bf Type} &
 		\scriptsize {\bf Description} \\
-		\hline {\tt lw} & I & \scriptsize Load word \\
-		\hline {\tt sw} & I & \scriptsize Store word \\
+		\hline {\tt lw} & {\tt 0x23} & {\tt I} & \scriptsize Load word \\
+		\hline {\tt sw} & {\tt 0x2B} & {\tt I} & \scriptsize Store word \\
 		\hline
 	\end{tabular}
 
-	\vspace{0.26in}
+	\vspace{0.26in} % to align the bottoms of the tables
 	\textbf{Branching} \\
 	\vspace{0.15in}
-	\begin{tabular}{|l|l|l|}
+	\begin{tabular}{|l|l|l|l|}
 		\hline
 		\scriptsize {\bf Mnemonic} &
+		\scriptsize {\bf Code} &
 		\scriptsize {\bf Type} &
 		\scriptsize {\bf Description} \\
-		\hline {\tt beq} & I & \scriptsize Branch on equal \\
-		\hline {\tt jal} & J & \scriptsize Jump and link \\
-		\hline {\tt jr} & R & \scriptsize Jump to register \\
+		\hline {\tt beq} & {\tt 0x04} & {\tt I} & \scriptsize Branch on equal \\
+		\hline {\tt jal} & {\tt 0x03} & {\tt J} & \scriptsize Jump and link \\
+		\hline {\tt jr} & {\tt 0x08} & {\tt R} & \scriptsize Jump to register \\
 		\hline
 	\end{tabular}
 
