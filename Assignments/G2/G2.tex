@@ -91,7 +91,7 @@
 
 \newpage
 \pagestyle{fancy}
-\section{Introduction}
+\section{Overview}
 ...
 
 \subsection{Instruction set}
@@ -166,7 +166,45 @@ Our pipeline is quite simple, its instruction set
 \newpage
 \pagestyle{fancy}
 \section{Tests}
+
+\subsection{Arithmetic-logical operations}
 ...
+
+\subsubsection{Forwarding}
+\begin{multicols}{2}
+\noindent ...
+\vfill
+\columnbreak
+...
+\lstset{language=[mips]Assembler}
+\lstinputlisting{tests/arithmetic.asm}
+...
+\end{multicols}
+
+\subsection{Memory-reference operations}
+\begin{multicols}{2}
+\noindent ...
+\vfill
+\columnbreak
+...
+\lstset{language=[mips]Assembler}
+\lstinputlisting{tests/memref.asm}
+...
+\end{multicols}
+
+\subsection{Branching operations}
+...
+
+\subsubsection{Hazards}
+\begin{multicols}{2}
+\noindent ...
+\vfill
+\columnbreak
+...
+\lstset{language=[mips]Assembler}
+\lstinputlisting{tests/branching.asm}
+...
+\end{multicols}
 
 \newpage
 \pagestyle{fancy}
