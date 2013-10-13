@@ -95,7 +95,7 @@
 ...
 
 \subsection{Instruction set}
-Our pipeline is quite simple in nature, its instruction set
+Our pipeline is quite simple, its instruction set
 (\figref[fig:instruction-set]) consists of only 14 instructions.
 
 \begin{figure}[H]
@@ -107,17 +107,17 @@ Our pipeline is quite simple in nature, its instruction set
 	\begin{tabular}{|l|l|l|}
 		\hline
 		\scriptsize {\bf Mnemonic} &
-		\scriptsize {\bf \dots} &
+		\scriptsize {\bf Type} &
 		\scriptsize {\bf Description} \\
-		\hline {\tt addu} & \dots & \scriptsize Add unsigned \\
-		\hline {\tt addiu} & \dots & \scriptsize Add immediate unsigned \\
-		\hline {\tt slt} & \dots & \scriptsize Set less than \\
-		\hline {\tt slti} & \dots & \scriptsize Set immediate less than \\
-		\hline {\tt subu} & \dots & \scriptsize Subtract unsigned \\
-		\hline {\tt and} & \dots & \scriptsize Logical AND \\
-		\hline {\tt andi} & \dots & \scriptsize Logical immediate AND \\
-		\hline {\tt or} & \dots & \scriptsize Logical OR \\
-		\hline {\tt ori} & \dots & \scriptsize Logical immediate OR \\
+		\hline {\tt addu} & R & \scriptsize Add unsigned \\
+		\hline {\tt addiu} & I & \scriptsize Add immediate unsigned \\
+		\hline {\tt slt} & R & \scriptsize Set less than \\
+		\hline {\tt slti} & I & \scriptsize Set immediate less than \\
+		\hline {\tt subu} & R & \scriptsize Subtract unsigned \\
+		\hline {\tt and} & R & \scriptsize Logical AND \\
+		\hline {\tt andi} & I & \scriptsize Logical immediate AND \\
+		\hline {\tt or} & R & \scriptsize Logical OR \\
+		\hline {\tt ori} & I & \scriptsize Logical immediate OR \\
 		\hline
 	\end{tabular}
 	
@@ -129,10 +129,10 @@ Our pipeline is quite simple in nature, its instruction set
 	\begin{tabular}{|l|l|l|}
 		\hline
 		\scriptsize {\bf Mnemonic} &
-		\scriptsize {\bf \dots} &
+		\scriptsize {\bf Type} &
 		\scriptsize {\bf Description} \\
-		\hline {\tt lw} & \dots & \scriptsize Load word \\
-		\hline {\tt sw} & \dots & \scriptsize Store word \\
+		\hline {\tt lw} & I & \scriptsize Load word \\
+		\hline {\tt sw} & I & \scriptsize Store word \\
 		\hline
 	\end{tabular}
 
@@ -142,11 +142,11 @@ Our pipeline is quite simple in nature, its instruction set
 	\begin{tabular}{|l|l|l|}
 		\hline
 		\scriptsize {\bf Mnemonic} &
-		\scriptsize {\bf \dots} &
+		\scriptsize {\bf Type} &
 		\scriptsize {\bf Description} \\
-		\hline {\tt beq} & \dots & \scriptsize Branch on equal \\
-		\hline {\tt jal} & \dots & \scriptsize Jump and link \\
-		\hline {\tt jr} & \dots & \scriptsize Jump to register \\
+		\hline {\tt beq} & I & \scriptsize Branch on equal \\
+		\hline {\tt jal} & J & \scriptsize Jump and link \\
+		\hline {\tt jr} & R & \scriptsize Jump to register \\
 		\hline
 	\end{tabular}
 
