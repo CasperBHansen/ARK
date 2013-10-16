@@ -2,43 +2,42 @@
 
 %========== PACKAGES ==========%
 
-\usepackage{a4wide}				% for a wider layout
-\usepackage{listings}			% for code examples
-\usepackage{color}				% for color declarations
+\usepackage{a4wide}                                % for a wider layout
+\usepackage{listings}                        % for code examples
+\usepackage{color}                                % for color declarations
 \usepackage{fancyhdr}
-\usepackage{float}				% for the [H] position specifier
-\usepackage[utf8]{inputenc}		% for UTF-8 encoding
+\usepackage{float}                                % for the [H] position specifier
+\usepackage[utf8]{inputenc}                % for UTF-8 encoding
 \usepackage{lipsum}
-\usepackage{mips}				% for MIPS syntax highlighting
-\usepackage{multicol}			% for multicolumn layouts
+\usepackage{mips}                                % for MIPS syntax highlighting
+\usepackage{multicol}                        % for multicolumn layouts
 
 
 %========== DEFINITIONS ==========%
 
-\definecolor{c_comment}{rgb}	{0.38, 0.62, 0.38}
-\definecolor{c_keyword}{rgb}	{0.10, 0.10, 0.81}
-\definecolor{c_identifier}{rgb}	{0.00, 0.00, 0.00}
-\definecolor{c_string}{rgb}		{0.50, 0.50, 0.50}
+\definecolor{c_comment}{rgb}        {0.38, 0.62, 0.38}
+\definecolor{c_keyword}{rgb}        {0.10, 0.10, 0.81}
+\definecolor{c_identifier}{rgb}        {0.00, 0.00, 0.00}
+\definecolor{c_string}{rgb}                {0.50, 0.50, 0.50}
 
 
 %========== MACROS ==========%
 
-\newcommand{\figref[1]}{see Figure~\ref{#1}}	% use for referencing figures
-
+\newcommand{\figref[1]}{see Figure~\ref{#1}}        % use for referencing figures
 
 %========== SETTINGS ==========%
 
 \lstset
 {
-	numbers=left,
-	frame=single,
-	basicstyle=\footnotesize\ttfamily,
-	tabsize=4,
-	% colors
-	commentstyle=\color{c_comment},
-	keywordstyle=\color{c_keyword},
-	identifierstyle=\color{c_identifier},
-	stringstyle=\color{c_string},
+        numbers=left,
+        frame=single,
+        basicstyle=\footnotesize\ttfamily,
+        tabsize=4,
+        % colors
+        commentstyle=\color{c_comment},
+        keywordstyle=\color{c_keyword},
+        identifierstyle=\color{c_identifier},
+        stringstyle=\color{c_string},
 }
 
 
@@ -46,27 +45,27 @@
 
 \title
 {
-	\vspace{0.0in}	% if more space is needed for abstract/toc adjust this
-	Machine Architecture\\
-	\Large Assignment 2
+        \vspace{0.0in}        % if more space is needed for abstract/toc adjust this
+        Machine Architecture\\
+        \Large Assignment 2
 }
 
 \author
 {
-	Casper B. Hansen\\
-	University of Copenhagen\\
-	Department of Computer Science\\
-	{\tt fvx507@alumni.ku.dk}
-	\and
-	Sine Vestergård Jensen\\
-	University of Copenhagen\\
-	Department of Computer Science\\
-	{\tt kms698@alumni.ku.dk}
-	\and
-	Nikolaj Høyer\\
-	University of Copenhagen\\
-	Department of Computer Science\\
-	{\tt ctl533@alumni.ku.dk}
+        Casper B. Hansen\\
+        University of Copenhagen\\
+        Department of Computer Science\\
+        {\tt fvx507@alumni.ku.dk}
+        \and
+        Sine Vestergård Jensen\\
+        University of Copenhagen\\
+        Department of Computer Science\\
+        {\tt kms698@alumni.ku.dk}
+        \and
+        Nikolaj Høyer\\
+        University of Copenhagen\\
+        Department of Computer Science\\
+        {\tt ctl533@alumni.ku.dk}
 }
 
 \date{\today}
@@ -79,10 +78,10 @@
 \maketitle
 \thispagestyle{empty}
 \hrule
-\vspace{0.5in}	% spacing between title/authors and abstract/toc
+\vspace{0.5in}        % spacing between title/authors and abstract/toc
 \begin{multicols}{2}
 \begin{abstract}
-\lipsum[1]	% todo: write an abstract
+\lipsum[1]        % todo: write an abstract
 \end{abstract}
 \vfill
 \columnbreak
@@ -99,63 +98,63 @@ Our pipeline is quite simple, its instruction set
 (\figref[fig:instruction-set]) consists of only 14 instructions.
 
 \begin{figure}[H]
-	\begin{multicols}{2}
-	\center
+        \begin{multicols}{2}
+        \center
 
-	\textbf{Arithmetic-logical} \\
-	\vspace{0.15in}
-	\begin{tabular}{|l|l|l|l|}
-		\hline
-		\scriptsize {\bf Mnemonic} &
-		\scriptsize {\bf Code} &
-		\scriptsize {\bf Type} &
-		\scriptsize {\bf Description} \\
-		\hline {\tt addu} & {\tt 0x21} & {\tt R} & \scriptsize Add unsigned \\
-		\hline {\tt addiu} & {\tt 0x09} & {\tt I} & \scriptsize Add imm. unsigned \\
-		\hline {\tt slt} & {\tt 0x2A} & {\tt R} & \scriptsize Set less than \\
-		\hline {\tt slti} & {\tt 0x0A} & {\tt I} & \scriptsize Set imm. less than \\
-		\hline {\tt subu} & {\tt 0x23} & {\tt R} & \scriptsize Subtract unsigned \\
-		\hline {\tt and} & {\tt 0x24} & {\tt R} & \scriptsize Logical AND \\
-		\hline {\tt andi} & {\tt 0x0C} & {\tt I} & \scriptsize Logical imm. AND \\
-		\hline {\tt or} & {\tt 0x25} & {\tt R} & \scriptsize Logical OR \\
-		\hline {\tt ori} & {\tt 0x0D} & {\tt I} & \scriptsize Logical imm. OR \\
-		\hline
-	\end{tabular}
-	
-	\columnbreak
-	\center
+        \textbf{Arithmetic-logical} \\
+        \vspace{0.15in}
+        \begin{tabular}{|l|l|l|l|}
+                \hline
+                \scriptsize {\bf Mnemonic} &
+                \scriptsize {\bf Code} &
+                \scriptsize {\bf Type} &
+                \scriptsize {\bf Description} \\
+                \hline {\tt addu} & {\tt 0x21} & {\tt R} & \scriptsize Add unsigned \\
+                \hline {\tt addiu} & {\tt 0x09} & {\tt I} & \scriptsize Add imm. unsigned \\
+                \hline {\tt slt} & {\tt 0x2A} & {\tt R} & \scriptsize Set less than \\
+                \hline {\tt slti} & {\tt 0x0A} & {\tt I} & \scriptsize Set imm. less than \\
+                \hline {\tt subu} & {\tt 0x23} & {\tt R} & \scriptsize Subtract unsigned \\
+                \hline {\tt and} & {\tt 0x24} & {\tt R} & \scriptsize Logical AND \\
+                \hline {\tt andi} & {\tt 0x0C} & {\tt I} & \scriptsize Logical imm. AND \\
+                \hline {\tt or} & {\tt 0x25} & {\tt R} & \scriptsize Logical OR \\
+                \hline {\tt ori} & {\tt 0x0D} & {\tt I} & \scriptsize Logical imm. OR \\
+                \hline
+        \end{tabular}
+        
+        \columnbreak
+        \center
 
-	\textbf{Memory-reference} \\
-	\vspace{0.15in}
-	\begin{tabular}{|l|l|l|l|}
-		\hline
-		\scriptsize {\bf Mnemonic} &
-		\scriptsize {\bf Code} &
-		\scriptsize {\bf Type} &
-		\scriptsize {\bf Description} \\
-		\hline {\tt lw} & {\tt 0x23} & {\tt I} & \scriptsize Load word \\
-		\hline {\tt sw} & {\tt 0x2B} & {\tt I} & \scriptsize Store word \\
-		\hline
-	\end{tabular}
+        \textbf{Memory-reference} \\
+        \vspace{0.15in}
+        \begin{tabular}{|l|l|l|l|}
+                \hline
+                \scriptsize {\bf Mnemonic} &
+                \scriptsize {\bf Code} &
+                \scriptsize {\bf Type} &
+                \scriptsize {\bf Description} \\
+                \hline {\tt lw} & {\tt 0x23} & {\tt I} & \scriptsize Load word \\
+                \hline {\tt sw} & {\tt 0x2B} & {\tt I} & \scriptsize Store word \\
+                \hline
+        \end{tabular}
 
-	\vspace{0.26in} % to align the bottoms of the tables
-	\textbf{Branching} \\
-	\vspace{0.15in}
-	\begin{tabular}{|l|l|l|l|}
-		\hline
-		\scriptsize {\bf Mnemonic} &
-		\scriptsize {\bf Code} &
-		\scriptsize {\bf Type} &
-		\scriptsize {\bf Description} \\
-		\hline {\tt beq} & {\tt 0x04} & {\tt I} & \scriptsize Branch on equal \\
-		\hline {\tt jal} & {\tt 0x03} & {\tt J} & \scriptsize Jump and link \\
-		\hline {\tt jr} & {\tt 0x08} & {\tt R} & \scriptsize Jump to register \\
-		\hline
-	\end{tabular}
+        \vspace{0.26in} % to align the bottoms of the tables
+        \textbf{Branching} \\
+        \vspace{0.15in}
+        \begin{tabular}{|l|l|l|l|}
+                \hline
+                \scriptsize {\bf Mnemonic} &
+                \scriptsize {\bf Code} &
+                \scriptsize {\bf Type} &
+                \scriptsize {\bf Description} \\
+                \hline {\tt beq} & {\tt 0x04} & {\tt I} & \scriptsize Branch on equal \\
+                \hline {\tt jal} & {\tt 0x03} & {\tt J} & \scriptsize Jump and link \\
+                \hline {\tt jr} & {\tt 0x08} & {\tt R} & \scriptsize Jump to register \\
+                \hline
+        \end{tabular}
 
-	\end{multicols}
-	\caption{Instruction set}
-	\label{fig:instruction-set}
+        \end{multicols}
+        \caption{Instruction set}
+        \label{fig:instruction-set}
 \end{figure}
 
 \subsection{Pipeline}
@@ -169,7 +168,45 @@ Our pipeline is quite simple, its instruction set
 \newpage
 \pagestyle{fancy}
 \section{Tests}
-
+\begin{figure}[h!]
+        \begin{tabular}{ | l | l | l | l |}
+                \hline
+                $ .\$ 0$ & $00000000$  &  $ .\$ 16$ & $00000000$ \\
+                \hline
+                $ .\$ 1$ & $00000000$  &  $ .\$ 17$ & $00000000$ \\
+                \hline
+                $ .\$ 2$ & $00000000$  &  $ .\$ 18$ & $00000000$ \\
+                \hline
+                $ .\$ 3$ & $00000000$  &  $ .\$ 19$ & $00000000$ \\
+                \hline
+                $ .\$ 4$ & $00000000$  &  $ .\$ 20$ & $00000000$ \\
+                \hline
+                $ .\$ 5$ & $00000000$  &  $ .\$ 21$ & $00000000$ \\
+                \hline
+                $ .\$ 6$ & $00000000$  &  $ .\$ 22$ & $00000000$ \\
+                \hline
+                $ .\$ 7$ & $00000000$  &  $ .\$ 23$ & $00000000$ \\
+                \hline
+                $ .\$ 8$ & $00000000$  &  $ .\$ 24$ & $00000000$ \\
+                \hline
+                $ .\$ 9$ & $00000000$  &  $ .\$ 25$ & $00000000$ \\
+                \hline
+                $ .\$ 10$ & $00000000$  &  $ .\$ 26$ & $00000000$ \\
+                \hline
+                $ .\$ 11$ & $00000000$  &  $ .\$ 27$ & $00000000$ \\
+                \hline
+                $ .\$ 12$ & $00000000$  &  $ .\$ 28$ & $00000000$ \\
+                \hline
+                $ .\$ 13$ & $00000000$  &  $ .\$ 29$ & $00000000$ \\
+                \hline
+                $ .\$ 14$ & $00000000$  &  $ .\$ 30$ & $00000000$ \\
+                \hline
+                $ .\$ 15$ & $00000000$  &  $ .\$ 31$ & $00000000$ \\
+                \hline
+        \end{tabular}
+        \caption{Forventet resultat}
+        \label{fig:resultat0}
+\end{figure}
 \subsection{Arithmetic-logical operations}
 ...
 
