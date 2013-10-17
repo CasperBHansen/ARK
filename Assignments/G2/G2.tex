@@ -81,7 +81,7 @@
 \vspace{0.5in}        % spacing between title/authors and abstract/toc
 \begin{multicols}{2}
 \begin{abstract}
-\lipsum[1]        % todo: write an abstract
+Warum med ? Men vi kan sagtens skrive en smule tekst.
 \end{abstract}
 \vfill
 \columnbreak
@@ -91,11 +91,11 @@
 \newpage
 \pagestyle{fancy}
 \section{Overview}
-...
+Vi startede med at lave en single cycle, som vi lavede om til en pipeline, i nedenstående afsnit har vi forklaret processen fra single cycle til pipeline.
 
 \subsection{Instruction set}
-Our pipeline is quite simple, its instruction set
-(\figref[fig:instruction-set]) consists of only 14 instructions.
+Our pipeline is quite simple, its instruction set 
+(\figref[fig:instruction-set]) consists of only 14 instructions. (Oversæt til dansk)
 
 \begin{figure}[H]
         \begin{multicols}{2}
@@ -157,17 +157,25 @@ Our pipeline is quite simple, its instruction set
         \label{fig:instruction-set}
 \end{figure}
 
-\subsection{Pipeline}
-...
+\subsection{``making of'' Single Cycle}
+Hvordan lavede vi Single Cycle
 
-\newpage
-\pagestyle{fancy}
-\section{Preliminary design}
-...
+\subsection{``making of'' Pipeline}
+Hvordan lavede vi pipeline, hvad ændrede vi fra Single Cycle
+
+\subsection{``making of'' forwarding og hazard detektion}
+Hvordan lavede viforwarding og hazard detektion, hvad ændrede vi fra Pipeline
+
+\subsection{Done og virker}
+hvad virker og hvorfor virker det (aka se test)
+
+\subsection{fejl og manlger}
+Har vi noget der ikke virker og hvordan har vi tænkt os at implimentere det.
 
 \newpage
 \pagestyle{fancy}
 \section{Tests}
+Lige til, dog skal vi lave nogle gode test. Lad os komme med nogle nice ideer og så skrive hvordan de virker og giv resultatet. Husk forventet output og faktisk output.
 \begin{figure}[h!]
         \begin{tabular}{ | l | l | l | l |}
                 \hline
