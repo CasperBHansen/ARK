@@ -75,6 +75,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(2490,650)" to="(2490,750)"/>
     <wire from="(1820,1050)" to="(1830,1050)"/>
     <wire from="(1310,390)" to="(1310,400)"/>
+    <wire from="(1730,560)" to="(1730,680)"/>
     <wire from="(390,690)" to="(410,690)"/>
     <wire from="(1320,440)" to="(1320,470)"/>
     <wire from="(1160,710)" to="(1160,860)"/>
@@ -85,7 +86,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(1300,440)" to="(1300,450)"/>
     <wire from="(1640,480)" to="(1670,480)"/>
     <wire from="(1640,480)" to="(1640,550)"/>
-    <wire from="(1630,680)" to="(1900,680)"/>
     <wire from="(1290,390)" to="(1310,390)"/>
     <wire from="(1740,560)" to="(1740,800)"/>
     <wire from="(1610,920)" to="(1710,920)"/>
@@ -93,6 +93,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(640,640)" to="(680,640)"/>
     <wire from="(2480,790)" to="(2590,790)"/>
     <wire from="(860,680)" to="(880,680)"/>
+    <wire from="(1730,680)" to="(1900,680)"/>
     <wire from="(1450,230)" to="(1490,230)"/>
     <wire from="(160,800)" to="(260,800)"/>
     <wire from="(1160,860)" to="(1410,860)"/>
@@ -353,7 +354,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(1140,630)" to="(1180,630)"/>
     <wire from="(1270,200)" to="(1290,200)"/>
     <wire from="(1030,480)" to="(1040,480)"/>
-    <wire from="(1540,540)" to="(1630,540)"/>
     <wire from="(50,190)" to="(50,430)"/>
     <wire from="(1310,480)" to="(1310,990)"/>
     <wire from="(1500,700)" to="(1500,1160)"/>
@@ -396,6 +396,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(1560,1050)" to="(1570,1050)"/>
     <wire from="(420,330)" to="(720,330)"/>
     <wire from="(470,790)" to="(800,790)"/>
+    <wire from="(1540,540)" to="(1670,540)"/>
     <wire from="(2010,630)" to="(2030,630)"/>
     <wire from="(680,750)" to="(740,750)"/>
     <wire from="(1950,150)" to="(2670,150)"/>
@@ -455,7 +456,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(2150,270)" to="(2150,700)"/>
     <wire from="(2160,710)" to="(2220,710)"/>
     <wire from="(1230,1220)" to="(2660,1220)"/>
-    <wire from="(1630,540)" to="(1630,680)"/>
     <wire from="(770,430)" to="(770,450)"/>
     <wire from="(1710,490)" to="(1720,490)"/>
     <wire from="(760,710)" to="(970,710)"/>
@@ -517,7 +517,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(1000,700)" to="(1220,700)"/>
     <wire from="(930,930)" to="(1340,930)"/>
     <wire from="(1490,230)" to="(1850,230)"/>
-    <wire from="(1630,540)" to="(1670,540)"/>
     <wire from="(2010,210)" to="(2330,210)"/>
     <wire from="(870,240)" to="(870,280)"/>
     <wire from="(1560,1050)" to="(1560,1090)"/>
@@ -815,12 +814,16 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     </comp>
     <comp loc="(2250,1050)" name="Forwarding Unit (MEM)"/>
     <comp lib="7" loc="(390,690)" name="MIPSProgramROM">
-      <a name="contents">addiu $1, $0, 1
+      <a name="contents">addiu $1, $0, 2
 addiu $2, $0, 2
-addiu $3, $0, 3
-addiu $4, $0, 4
-addu $1, $1, $2
-addu $1, $1, $3
+sw $1, 0($0)
+sw $2, 4($0)
+#beq $1, $2, label
+	nop
+	nop
+	nop
+	nop
+#label:	
 addu $1, $1, $4
 </a>
     </comp>
