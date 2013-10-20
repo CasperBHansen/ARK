@@ -181,7 +181,7 @@ instruktioner blevet beskrevet kort.
         \label{fig:instruction-set}
 \end{figure}
 
-\subsection{``making of'' Single Cycle}
+\subsection{Implementering af Single-cycle}
 Da vi mødtes første gang tog vi simpelthen udgangspunkt i et helt nyt
 kredsløb, og byggede et en fungerende {\it single-cycle} implementation af
 den delmængde af MIPS instruktionssættet, som vi skulle understøtte jvf.
@@ -191,8 +191,32 @@ Vi fik således alle instruktioner til at virke korrekt på første dag, undtage
 instruktionerne {\tt jal} og {\tt jr}. Disse blev implementeret umiddelbart
 dagen efter.
 
-\subsection{``making of'' Pipeline}
-Hvordan lavede vi pipeline, hvad ændrede vi fra Single Cycle
+\subsection{Konvertering til Pipeline}
+Da {\it single-cycle} kredsløbet fungerede korrekt indførte vi {\it pipes},
+som er mellem-registrer, hvori vi midlertidigt gemmer værdier beregnet i,
+eller overført fra, sidste stadie (eg. {\tt IF/ID}, hvorfra vi viderefører
+{\it program counter} (PC) efter at have beregnet den følgende instruktions
+adresse, den nuværende instruktion, samt returneringsadressen for {\it jumps}
+og et {\it stall}-signal.   
+
+Vi introducerede alle {\it pipes} på én gang, da det var svært at se, hvordan
+vi skulle have håndteret en halvt indført pipeline, og tog de fejl som det
+medførte en efter en, herunder; at rykke {\it branch}-delen op i
+{\it pipelinen} (i {\tt IF}-stadiet), hvilket medbragte den fordel, at vi ikke
+skulle tænke så meget over {\it branch-delay slot}, i og med, at den følgende
+{\it fetched} instruktion gerne skulle udføres, men PC derefter er blevet
+ændret til {\it branch}-adressen.
+
+Da disse indledende fejl var blevet reduceret og vi fik et overskueligt
+overblik over kredsløbet igen, påbegyndte vi at tage os af {\it hazards},
+hvoraf vi tog os af de nemmeste og mest åbenlyse problemer først, herunder;
+forwarding for de aritmetiske operationer (eg. {\tt addiu} og {\tt subu}),
+og derefter {\it hazard-detection} og {\it stall} for {\it memory} operationer
+(eg. {\tt sw} og {\tt lw}).
+
+Til sidst tog vi os af {\it jumps}, hvilket viste sig at være mere udfordrende
+end først antaget, og også årsagen til, at vi må erkende, at vores kredsløb
+har nogle fejl på dette område. [afklar hvilke fejl?]
 
 \subsection{``making of'' forwarding og hazard detektion}
 Hvordan lavede viforwarding og hazard detektion, hvad ændrede vi fra Pipeline
