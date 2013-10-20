@@ -254,12 +254,6 @@ netop før branchen. Det har også været nødvendigt med endnu en forwarding
 unit i ID trinnet, udelukkende til branches, som sørger for at hente fx. adds
 elle lignende tilbage til branch operationen.
 
-\subsection{Done og virker}
-hvad virker og hvorfor virker det (aka se test)
-
-\subsection{Fejl og mangler}
-Har vi noget der ikke virker og hvordan har vi tænkt os at implimentere det.
-
 \newpage
 \pagestyle{fancy}
 \section{Tests}
@@ -321,6 +315,61 @@ data i registrerne (\figref[fig:arithmetic-results]).
 \end{figure}
 \end{multicols}
 
+\newpage
+\subsection{Hazards}
+...
+
+\subsubsection{Data Hazards}
+\begin{multicols}{2}
+\noindent I det følgende testes om kredsløbet {\it staller} korrekt.
+\lstset{language=[mips]Assembler}
+\lstinputlisting{tests/data_hazard.asm}
+Linjer 3--4 gemmer værdierne $3$ og $4$ til {\it memory}, og systemet skal
+da stalle inden de læses derfra indtil de er klar
+(\figref[fig:data-hazard-results]).
+\vfill
+\columnbreak
+\begin{figure}[H]
+	\center
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		{\tt \$zero} & $00000000$ & {\tt \$s0} & $00000003$ \\
+		\hline
+		{\tt \$at} & $00000000$ & {\tt \$s1} & $00000004$ \\
+		\hline
+		{\tt \$v0} & $00000000$ & {\tt \$s2} & $00000000$ \\
+		\hline
+		{\tt \$v1} & $00000000$ & {\tt \$s3} & $00000000$ \\
+		\hline
+		{\tt \$a0} & $00000000$ & {\tt \$s4} & $00000000$ \\
+		\hline
+		{\tt \$a1} & $00000000$ & {\tt \$s5} & $00000000$ \\
+		\hline
+		{\tt \$a2} & $00000000$ & {\tt \$s6} & $00000000$ \\
+		\hline
+		{\tt \$a3} & $00000000$ & {\tt \$s7} & $00000000$ \\
+		\hline
+		{\tt \$t0} & $00000003$ & {\tt \$t8} & $00000000$ \\
+		\hline
+		{\tt \$t1} & $00000004$ & {\tt \$t9} & $00000000$ \\
+		\hline
+		{\tt \$t2} & $00000003$ & {\tt \$k0} & $00000000$ \\
+		\hline
+		{\tt \$t3} & $00000004$ & {\tt \$k1} & $00000000$ \\
+		\hline
+		{\tt \$t4} & $00000000$ & {\tt \$gp} & $00000000$ \\
+		\hline
+		{\tt \$t5} & $00000000$ & {\tt \$sp} & $00000000$ \\
+		\hline
+		{\tt \$t6} & $00000000$ & {\tt \$fp} & $00000000$ \\
+		\hline
+		{\tt \$t7} & $00000000$ & {\tt \$ra} & $00000000$ \\
+		\hline
+	\end{tabular}
+	\caption{Forventet resultater for data hazard tests}
+	\label{fig:data-hazard-results}
+\end{figure}
+\end{multicols}
 \newpage
 \subsection{Branching operations}
 ...
