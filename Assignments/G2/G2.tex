@@ -273,21 +273,23 @@ bør anvendes istedet for --- altså forwarding.
 
 \begin{multicols}{2}
 \noindent I det følgende udregnes $((3+4)+7)-3$.
+\lstset{language=[mips]Assembler}
 \lstinputlisting{tests/arithmetic.asm}
+Som det forventes producerer ovenstående instruktioner nøjagtig de forventede
+data i registrerne (\figref[fig:arithmetic-results]).
 \vfill
 \columnbreak
-\lstset{language=[mips]Assembler}
 \begin{figure}[H]
 	\center
 	\begin{tabular}{|l|l|l|l|}
 		\hline
-		{\tt \$zero} & $00000000$ & {\tt \$s0} & $00000000$ \\
+		{\tt \$zero} & $00000000$ & {\tt \$s0} & $00000003$ \\
 		\hline
-		{\tt \$at} & $00000000$ & {\tt \$s1} & $00000000$ \\
+		{\tt \$at} & $00000000$ & {\tt \$s1} & $00000004$ \\
 		\hline
-		{\tt \$v0} & $00000000$ & {\tt \$s2} & $00000000$ \\
+		{\tt \$v0} & $00000000$ & {\tt \$s2} & $00000007$ \\
 		\hline
-		{\tt \$v1} & $00000000$ & {\tt \$s3} & $00000000$ \\
+		{\tt \$v1} & $00000000$ & {\tt \$s3} & $00000001$ \\
 		\hline
 		{\tt \$a0} & $00000000$ & {\tt \$s4} & $00000000$ \\
 		\hline
@@ -295,29 +297,28 @@ bør anvendes istedet for --- altså forwarding.
 		\hline
 		{\tt \$a2} & $00000000$ & {\tt \$s6} & $00000000$ \\
 		\hline
-		{\tt \$a3} & $00000000$ & $ .\$s7$ & $00000000$ \\
+		{\tt \$a3} & $00000000$ & {\tt \$s7} & $00000000$ \\
 		\hline
-		{\tt \$t0} & $00000000$ & $ .\$t8$ & $00000000$ \\
+		{\tt \$t0} & $00000000$ & {\tt \$t8} & $00000000$ \\
 		\hline
-		{\tt \$t1} & $00000000$ & $ .\$t9$ & $00000000$ \\
+		{\tt \$t1} & $0000000e$ & {\tt \$t9} & $00000000$ \\
 		\hline
-		{\tt \$t2} & $00000000$ & $ .\$k0$ & $00000000$ \\
+		{\tt \$t2} & $0000000b$ & {\tt \$k0} & $00000000$ \\
 		\hline
-		{\tt \$t3} & $00000000$ & $ .\$k1$ & $00000000$ \\
+		{\tt \$t3} & $00000001$ & {\tt \$k1} & $00000000$ \\
 		\hline
-		{\tt \$t4} & $00000000$ & $ .\$gp$ & $00000000$ \\
+		{\tt \$t4} & $00000001$ & {\tt \$gp} & $00000000$ \\
 		\hline
-		{\tt \$t5} & $00000000$ & $ .\$sp$ & $00000000$ \\
+		{\tt \$t5} & $00000001$ & {\tt \$sp} & $00000000$ \\
 		\hline
-		{\tt \$t6} & $00000000$ & $ .\$fp$ & $00000000$ \\
+		{\tt \$t6} & $00000000$ & {\tt \$fp} & $00000000$ \\
 		\hline
-		{\tt \$t7} & $00000000$ & $ .\$ra$ & $00000000$ \\
+		{\tt \$t7} & $00000001$ & {\tt \$ra} & $00000000$ \\
 		\hline
 	\end{tabular}
 	\caption{Forventet resultat}
 	\label{fig:arithmetic-results}
 \end{figure}
-...
 \end{multicols}
 
 \subsection{Memory-reference operations}
