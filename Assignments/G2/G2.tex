@@ -315,10 +315,63 @@ data i registrerne (\figref[fig:arithmetic-results]).
 \end{figure}
 \end{multicols}
 
-\newpage
-\subsection{Hazards}
-...
+\subsection{Memory operationer}
+\begin{multicols}{2}
+\noindent 
+\lstset{language=[mips]Assembler}
+\lstinputlisting{tests/memory.asm}
+Som det forventes producerer ovenstående instruktioner nøjagtig de forventede
+data i registrerne. Der bliver også skrevet til hukommelsaddressen 000000 en
+værdi på 4. Den anden sw operation bliver dog ikke skrevet, så addresse 000004
+forbliver 0. Dette skyldes at lw ikke når at loade før sw skal bruge værdien.
+Der er således tale om en uafklaret hazard, som vi desværre ikke har fået
+løst. (\figref[fig:memory-results]).
+\vfill
+\columnbreak
+\begin{figure}[H]
+	\center
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		{\tt \$zero} & $00000000$ & {\tt \$s0} & $00000004$ \\
+		\hline
+		{\tt \$at} & $00000000$ & {\tt \$s1} & $00000004$ \\
+		\hline
+		{\tt \$v0} & $00000000$ & {\tt \$s2} & $00000000$ \\
+		\hline
+		{\tt \$v1} & $00000000$ & {\tt \$s3} & $00000000$ \\
+		\hline
+		{\tt \$a0} & $00000000$ & {\tt \$s4} & $00000000$ \\
+		\hline
+		{\tt \$a1} & $00000000$ & {\tt \$s5} & $00000000$ \\
+		\hline
+		{\tt \$a2} & $00000000$ & {\tt \$s6} & $00000000$ \\
+		\hline
+		{\tt \$a3} & $00000000$ & {\tt \$s7} & $00000000$ \\
+		\hline
+		{\tt \$t0} & $00000000$ & {\tt \$t8} & $00000000$ \\
+		\hline
+		{\tt \$t1} & $00000000$ & {\tt \$t9} & $00000000$ \\
+		\hline
+		{\tt \$t2} & $00000000$ & {\tt \$k0} & $00000000$ \\
+		\hline
+		{\tt \$t3} & $00000000$ & {\tt \$k1} & $00000000$ \\
+		\hline
+		{\tt \$t4} & $00000000$ & {\tt \$gp} & $00000000$ \\
+		\hline
+		{\tt \$t5} & $00000000$ & {\tt \$sp} & $00000000$ \\
+		\hline
+		{\tt \$t6} & $00000000$ & {\tt \$fp} & $00000000$ \\
+		\hline
+		{\tt \$t7} & $00000000$ & {\tt \$ra} & $00000000$ \\
+		\hline
+	\end{tabular}
+	\caption{Forventet memory resultat}
+	\label{fig:memory-results}
+\end{figure}
+\end{multicols}
 
+
+\subsection{Hazards}
 \subsubsection{Data Hazards}
 \begin{multicols}{2}
 \noindent I det følgende testes om kredsløbet {\it staller} korrekt.
@@ -370,10 +423,8 @@ da stalle inden de læses derfra indtil de er klar
 	\label{fig:data-hazard-results}
 \end{figure}
 \end{multicols}
-\newpage
-\subsection{Branching operations}
-...
 
+\subsection{Branching operations}
 \subsubsection{Jumps}
 \begin{multicols}{2}
 \noindent I det følgende testes branching, {\tt jr} og {\tt jal}.
@@ -425,68 +476,6 @@ Som det fremgår af register {\tt \$s2} kan vi se fejlen der opstår
 \end{figure}
 \end{multicols}
 
-\newpage
-
-\subsection{Memory operationer}
-
-\begin{multicols}{2}
-\noindent 
-\lstset{language=[mips]Assembler}
-\lstinputlisting{tests/memory.asm}
-Som det forventes producerer ovenstående instruktioner nøjagtig de forventede
-data i registrerne. Der bliver også skrevet til hukommelsaddressen 000000 en værdi
-på 4. Den anden sw operation bliver dog ikke skrevet, så addresse 000004 forbliver 0.
-Dette skyldes at lw ikke når at loade før sw skal bruge værdien. Der er således tale om 
-en uafklaret hazard, som vi desværre ikke har fået løst. (\figref[fig:arithmetic-results]).
-\vfill
-\columnbreak
-\begin{figure}[H]
-	\center
-	\begin{tabular}{|l|l|l|l|}
-		\hline
-		{\tt \$zero} & $00000000$ & {\tt \$s0} & $00000004$ \\
-		\hline
-		{\tt \$at} & $00000000$ & {\tt \$s1} & $00000004$ \\
-		\hline
-		{\tt \$v0} & $00000000$ & {\tt \$s2} & $00000000$ \\
-		\hline
-		{\tt \$v1} & $00000000$ & {\tt \$s3} & $00000000$ \\
-		\hline
-		{\tt \$a0} & $00000000$ & {\tt \$s4} & $00000000$ \\
-		\hline
-		{\tt \$a1} & $00000000$ & {\tt \$s5} & $00000000$ \\
-		\hline
-		{\tt \$a2} & $00000000$ & {\tt \$s6} & $00000000$ \\
-		\hline
-		{\tt \$a3} & $00000000$ & {\tt \$s7} & $00000000$ \\
-		\hline
-		{\tt \$t0} & $00000000$ & {\tt \$t8} & $00000000$ \\
-		\hline
-		{\tt \$t1} & $00000000$ & {\tt \$t9} & $00000000$ \\
-		\hline
-		{\tt \$t2} & $00000000$ & {\tt \$k0} & $00000000$ \\
-		\hline
-		{\tt \$t3} & $00000000$ & {\tt \$k1} & $00000000$ \\
-		\hline
-		{\tt \$t4} & $00000000$ & {\tt \$gp} & $00000000$ \\
-		\hline
-		{\tt \$t5} & $00000000$ & {\tt \$sp} & $00000000$ \\
-		\hline
-		{\tt \$t6} & $00000000$ & {\tt \$fp} & $00000000$ \\
-		\hline
-		{\tt \$t7} & $00000000$ & {\tt \$ra} & $00000000$ \\
-		\hline
-	\end{tabular}
-	\caption{Forventet resultat}
-	\label{fig:arithmetic-results}
-\end{figure}
-\end{multicols}
-\newpage
-
-\subsubsection{Branch Hazards/Forwarding}
-...
-
-\newpage
 \pagestyle{fancy}
 \begin{thebibliography}{9}
 

@@ -1,24 +1,23 @@
-# Her testes for branching, jr og jal. 
-# Status: PASS
-# ---------------------------------------------- #
-#       Instruktion     |    Forventet output    #
-# ---------------------------------------------- #
-addiu	$s0, $zero, 4   # s0: 4
-addiu	$s1, $zero, 2   # s1: 2
-jal label               #
-	nop             # 1. og 2. gang jumpes
-	nop             #   - ra: 16
-	nop             #
-label:                  # jump hertil
-beq	$s0, $s1, next  # tages trejde gang
-addiu	$s1, $s1, 1     # Taelles op til 5
-jr	$ra             # 
-next:                   # branch hertil
-	nop                    # 
-addiu	$s2, $zero, 3	# s2: 3 - men bliver aldrig skrevet! Fail
+main:
+	addiu $s0, $zero, 4
+	addiu $s1, $zero, 2
+	jal label
 	nop
 	nop
-jal end
-nop
+	nop
+
+label:
+	beq $s0, $s1, next
+	addiu $s1, $s1, 1
+	jr $ra
+
+next:
+	nop
+	addiu $s2, $zero, 3 # failure 
+	nop
+	nop
+	jal end
+	nop
+
 end:
 	nop
