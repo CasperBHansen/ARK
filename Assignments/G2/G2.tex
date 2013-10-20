@@ -246,6 +246,14 @@ konventionen og kun skriver til {\tt \$ra} med {\tt jal}, vil dette ikke
 blive et problem, eftersom {\tt jal} allerede skriver til registret i
 {\tt ID}-trinnet.
 
+Til gengæld er har vi indført en seperat hazard detection unit for branches,
+der sørger for at stalle pipelinen, hvis branch operationen afhænger af endnu
+ikke produceret output. For eksempel vil pipelinen blive stallet to gange i
+tilfælde af at branch operationen afhænger af en lw operation i instruktionen
+netop før branchen. Det har også været nødvendigt med endnu en forwarding
+unit i ID trinnet, udelukkende til branches, som sørger for at hente fx. adds
+elle lignende tilbage til branch operationen.
+
 \subsection{Done og virker}
 hvad virker og hvorfor virker det (aka se test)
 
@@ -259,9 +267,13 @@ Herunder vil vi foretage en gennemgang af de tests vi har udført på
 kredsløbet iht. de forventede resultater, og sammenligningen deraf.
 
 \subsection{Aritmetiske og logiske operationer}
+<<<<<<< HEAD
 Ved at sammenligne de to registrer, som bruges ved et aritmetisk eller logisk
 operation med de som allerede ligger i {\it pipen} kan vi forudse, om disse
 bør anvendes istedet for --- altså forwarding.
+=======
+Forventet resultat stemmer overens med faktisk.
+>>>>>>> 837e379aaf4802b4919313ee56ce192214b0ff12
 
 \begin{multicols}{2}
 \noindent I det følgende udregnes $((3+4)+7)-3$.
@@ -273,6 +285,7 @@ bør anvendes istedet for --- altså forwarding.
 	\center
 	\begin{tabular}{|l|l|l|l|}
 		\hline
+<<<<<<< HEAD
 		{\tt \$zero} & $00000000$ & {\tt \$s0} & $00000000$ \\
 		\hline
 		{\tt \$at} & $00000000$ & {\tt \$s1} & $00000000$ \\
@@ -280,6 +293,15 @@ bør anvendes istedet for --- altså forwarding.
 		{\tt \$v0} & $00000000$ & {\tt \$s2} & $00000000$ \\
 		\hline
 		{\tt \$v1} & $00000000$ & {\tt \$s3} & $00000000$ \\
+=======
+		$ .\$zero$ & $00000000$  &  $ .\$s0$ & $00000003$ \\
+		\hline
+		$ .\$at$ & $00000000$  &  $ .\$s1$ & $00000004$ \\
+		\hline
+		$ .\$v0$ & $00000000$  &  $ .\$s2$ & $00000007$ \\
+		\hline
+		$ .\$v1$ & $00000000$  &  $ .\$s3$ & $00000001$ \\
+>>>>>>> 837e379aaf4802b4919313ee56ce192214b0ff12
 		\hline
 		{\tt \$a0} & $00000000$ & {\tt \$s4} & $00000000$ \\
 		\hline
@@ -291,6 +313,7 @@ bør anvendes istedet for --- altså forwarding.
 		\hline
 		{\tt \$t0} & $00000000$ & $ .\$t8$ & $00000000$ \\
 		\hline
+<<<<<<< HEAD
 		{\tt \$t1} & $00000000$ & $ .\$t9$ & $00000000$ \\
 		\hline
 		{\tt \$t2} & $00000000$ & $ .\$k0$ & $00000000$ \\
@@ -300,10 +323,25 @@ bør anvendes istedet for --- altså forwarding.
 		{\tt \$t4} & $00000000$ & $ .\$gp$ & $00000000$ \\
 		\hline
 		{\tt \$t5} & $00000000$ & $ .\$sp$ & $00000000$ \\
+=======
+		$ .\$t1$ & $0000000e$  &  $ .\$t9$ & $00000000$ \\
+		\hline
+		$ .\$t2$ & $0000000b$  &  $ .\$k0$ & $00000000$ \\
+		\hline
+		$ .\$t3$ & $00000001$  &  $ .\$k1$ & $00000000$ \\
+		\hline
+		$ .\$t4$ & $00000001$  &  $ .\$gp$ & $00000000$ \\
+		\hline
+		$ .\$t5$ & $00000001$  &  $ .\$sp$ & $00000000$ \\
+>>>>>>> 837e379aaf4802b4919313ee56ce192214b0ff12
 		\hline
 		{\tt \$t6} & $00000000$ & $ .\$fp$ & $00000000$ \\
 		\hline
+<<<<<<< HEAD
 		{\tt \$t7} & $00000000$ & $ .\$ra$ & $00000000$ \\
+=======
+		$ .\$t7$ & $00000001$  &  $ .\$ra$ & $00000000$ \\
+>>>>>>> 837e379aaf4802b4919313ee56ce192214b0ff12
 		\hline
 	\end{tabular}
 	\caption{Forventet resultat}

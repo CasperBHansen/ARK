@@ -1,6 +1,6 @@
 CC=gcc
 
-pdf:
+build:
 	pdflatex G2.tex
 
 clean:
