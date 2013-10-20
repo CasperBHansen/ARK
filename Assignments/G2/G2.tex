@@ -295,17 +295,56 @@ Lige til, dog skal vi lave nogle gode test. Lad os komme med nogle nice ideer og
         \caption{Forventet resultat}
         \label{fig:resultat0}
 \end{figure}
-\subsection{Arithmetic-logical operations}
-...
 
-\subsubsection{Forwarding}
+\subsection{Aritmetiske og logiske operationer}
+Ved at sammenligne 
+
 \begin{multicols}{2}
-\noindent ...
+\noindent I det følgende udregnes $((3+4)+7)-3$.
+\lstinputlisting{tests/arithmetic.asm}
 \vfill
 \columnbreak
-...
 \lstset{language=[mips]Assembler}
-% \lstinputlisting{tests/arithmetic.asm}
+\begin{figure}[H]
+	\center
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+    	$ .\$zero$ & $00000000$  &  $ .\$ 16$ & $00000000$ \\
+		\hline
+		$ .\$ 1$ & $00000000$  &  $ .\$ 17$ & $00000000$ \\
+		\hline
+		$ .\$ 2$ & $00000000$  &  $ .\$ 18$ & $00000000$ \\
+		\hline
+		$ .\$ 3$ & $00000000$  &  $ .\$ 19$ & $00000000$ \\
+		\hline
+		$ .\$ 4$ & $00000000$  &  $ .\$ 20$ & $00000000$ \\
+		\hline
+		$ .\$ 5$ & $00000000$  &  $ .\$ 21$ & $00000000$ \\
+		\hline
+		$ .\$ 6$ & $00000000$  &  $ .\$ 22$ & $00000000$ \\
+		\hline
+		$ .\$ 7$ & $00000000$  &  $ .\$ 23$ & $00000000$ \\
+		\hline
+		$ .\$ 8$ & $00000000$  &  $ .\$ 24$ & $00000000$ \\
+		\hline
+		$ .\$ 9$ & $00000000$  &  $ .\$ 25$ & $00000000$ \\
+		\hline
+		$ .\$ 10$ & $00000000$  &  $ .\$ 26$ & $00000000$ \\
+		\hline
+		$ .\$ 11$ & $00000000$  &  $ .\$ 27$ & $00000000$ \\
+		\hline
+		$ .\$ 12$ & $00000000$  &  $ .\$ 28$ & $00000000$ \\
+		\hline
+		$ .\$ 13$ & $00000000$  &  $ .\$ 29$ & $00000000$ \\
+		\hline
+		$ .\$ 14$ & $00000000$  &  $ .\$ 30$ & $00000000$ \\
+		\hline
+		$ .\$ 15$ & $00000000$  &  $ .\$ra$ & $00000000$ \\
+		\hline
+	\end{tabular}
+	\caption{Forventet resultat}
+	\label{fig:resultat0}
+\end{figure}
 ...
 \end{multicols}
 
