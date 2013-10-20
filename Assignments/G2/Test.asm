@@ -16,7 +16,6 @@
 # ---------------------------------------------- #
 #       Instruktion     |    Forventet output    #
 # ---------------------------------------------- #
-arithmetic:
 addiu	$s0, $zero, 3   #  s0: 3
 addiu	$s1, $zero, 4   #  s1: 4
 addiu	$s2, $zero, 7   #  s2: 7
@@ -36,7 +35,6 @@ ori	$t8, $t7, 0     #  t8: 0
 # ---------------------------------------------- #
 #       Instruktion     |    Forventet output    #
 # ---------------------------------------------- #
-memory:
 sw	$s0, 0($0)	#  MEM 000000: 3
 sw	$s1, 4($0)	#  MEM 000004: 4
 sw	$s2, 8($0)	#  MEM 000008: 7
@@ -63,3 +61,64 @@ addiu	$t5, $t5, 1     # Taelles op til 5
 jr	$ra             # 
 stop:                   # branch hertil
 nop                     # stop her
+
+# Her testes for data hazard stalling. 
+# Status: PASS
+# ---------------------------------------------- #
+#       Instruktion     |    Forventet output    #
+# ---------------------------------------------- #
+lw	$t1, 4($0)      # t1: 4
+lw	$t0, 0($0)      # t0: 3
+addu	$t2, $t0, $zero # t2: 3
+addu	$t3, $t1, $zero # t3: 4
+
+# Her testes for branch hazard stalling.
+# Status: PASS
+# ---------------------------------------------- #
+#       Instruktion     |    Forventet output    #
+# ---------------------------------------------- #
+addiu	$t4, $zero, 7    # t4: 7
+lw	$t5, 8($0)       # t5: 7
+beq	$t4, $t5, hazard # Branch taken 
+	nop              # Denne operation udfoeres
+	nop              # Udfoeres ikke
+	nop              # Udfoeres ikke
+hazard:                  # Branch hertil
+	nop              # Udfoeres
+
+# Her testes for ID forwarding (branch)
+# Status: PASS
+# ---------------------------------------------- #
+#       Instruktion     |    Forventet output    #
+# ---------------------------------------------- #
+addiu	$t6, $0, 4      # t6: 4
+addiu	$t7, $0, 6      # t7: 6
+	nop             # nop's sikrer at t6 og t7
+	nop             # naar at blive skrevet
+	nop             # til reg foer de naeste
+	nop             # operationer.
+addiu	$t6, $0, 5      # t6: 5
+addiu	$t7, $0, 5      # t7: 5
+beq	$t6, $t7, forw  # Branch taken
+	nop             # Udfoeres
+	nop             # Udfoeres ikke
+	nop             # Udfoeres ikke
+forw:                   # Hop hertil
+	nop             # Udfoeres
+
+# Her testes for EXE forwarding
+# Status: PASS
+# ---------------------------------------------- #
+#       Instruktion     |    Forventet output    #
+# ---------------------------------------------- #
+addiu $t6, $zero, 2    # t6: 2
+addiu $t7, $zero, 3    # t7: 3
+addu $t8, $t6, $t7     # t8: 5
+
+# Her testes for MEM forwarding (lw/sw)
+# Status: PASS
+# ---------------------------------------------- #
+#       Instruktion     |    Forventet output    #
+# ---------------------------------------------- #
+
+# SKAL TESTES
