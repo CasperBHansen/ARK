@@ -10,9 +10,15 @@ jal label               #
 	nop             #   - ra: 16
 	nop             #
 label:                  # jump hertil
-beq	$s0, $s1, stop  # tages trejde gang
+beq	$s0, $s1, next  # tages trejde gang
 addiu	$s1, $s1, 1     # Taelles op til 5
 jr	$ra             # 
-stop:                   # branch hertil
-nop                     # stop her
-
+next:                   # branch hertil
+	nop                    # 
+addiu	$s2, $zero, 3	# s2: 3 - men bliver aldrig skrevet! Fail
+	nop
+	nop
+jal end
+nop
+end:
+	nop
