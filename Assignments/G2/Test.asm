@@ -35,29 +35,27 @@ ori	$t8, $t7, 0     #  t8: 0
 # ---------------------------------------------- #
 #       Instruktion     |    Forventet output    #
 # ---------------------------------------------- #
+addiu	$s0, $zero, 3   #  s0: 3
+addiu	$s1, $zero, 4   #  s1: 4
 sw	$s0, 0($0)	#  MEM 000000: 3
 sw	$s1, 4($0)	#  MEM 000004: 4
-sw	$s2, 8($0)	#  MEM 000008: 7
-sw	$s3, 12($0)	#  MEM 000012: 1
 lw	$t0, 0($0)	#  t0: 3
 lw	$t1, 4($0)	#  t1: 4
-lw	$t2, 8($0)	#  t2: 7
-lw	$t3, 12($0)	#  t3: 1
 
 # Her testes for branching, jr og jal. 
 # Status: PASS
 # ---------------------------------------------- #
 #       Instruktion     |    Forventet output    #
 # ---------------------------------------------- #
-addiu	$t4, $zero, 4   # t4: 4
-addiu	$t5, $zero, 2   # t5: 2
+addiu	$s0, $zero, 4   # s0: 4
+addiu	$s1, $zero, 2   # s1: 2
 jal label               #
 	nop             # 1. og 2. gang jumpes
-	nop             #   - ra: 78
+	nop             #   - ra: 16
 	nop             #
 label:                  # jump hertil
-beq	$t4, $t5, stop  # tages trejde gang
-addiu	$t5, $t5, 1     # Taelles op til 5
+beq	$s0, $s1, stop  # tages trejde gang
+addiu	$s1, $s1, 1     # Taelles op til 5
 jr	$ra             # 
 stop:                   # branch hertil
 nop                     # stop her
@@ -67,6 +65,10 @@ nop                     # stop her
 # ---------------------------------------------- #
 #       Instruktion     |    Forventet output    #
 # ---------------------------------------------- #
+addiu	$s0, $zero, 3   #  s0: 3
+addiu	$s1, $zero, 4   #  s1: 4
+sw	$s0, 0($0)	#  MEM 000000: 3
+sw	$s1, 4($0)	#  MEM 000004: 4
 lw	$t1, 4($0)      # t1: 4
 lw	$t0, 0($0)      # t0: 3
 addu	$t2, $t0, $zero # t2: 3
@@ -77,9 +79,11 @@ addu	$t3, $t1, $zero # t3: 4
 # ---------------------------------------------- #
 #       Instruktion     |    Forventet output    #
 # ---------------------------------------------- #
-addiu	$t4, $zero, 7    # t4: 7
-lw	$t5, 8($0)       # t5: 7
-beq	$t4, $t5, hazard # Branch taken 
+addiu	$s0, $zero, 7    # s0: 7
+sw	$s0, 0($0)
+addiu	$t1, $zero, 7    # t1: 7
+lw	$t2, 0($0)       # t2: 7
+beq	$t1, $t5, hazard # Branch taken 
 	nop              # Denne operation udfoeres
 	nop              # Udfoeres ikke
 	nop              # Udfoeres ikke
@@ -91,15 +95,15 @@ hazard:                  # Branch hertil
 # ---------------------------------------------- #
 #       Instruktion     |    Forventet output    #
 # ---------------------------------------------- #
-addiu	$t6, $0, 4      # t6: 4
-addiu	$t7, $0, 6      # t7: 6
+addiu	$s0, $0, 4      # s0: 4
+addiu	$s1, $0, 6      # s1: 6
 	nop             # nop's sikrer at t6 og t7
 	nop             # naar at blive skrevet
 	nop             # til reg foer de naeste
 	nop             # operationer.
-addiu	$t6, $0, 5      # t6: 5
-addiu	$t7, $0, 5      # t7: 5
-beq	$t6, $t7, forw  # Branch taken
+addiu	$s0, $0, 5      # s0: 5
+addiu	$s1, $0, 5      # s1: 5
+beq	$s0, $t7, forw  # Branch taken
 	nop             # Udfoeres
 	nop             # Udfoeres ikke
 	nop             # Udfoeres ikke
@@ -111,9 +115,9 @@ forw:                   # Hop hertil
 # ---------------------------------------------- #
 #       Instruktion     |    Forventet output    #
 # ---------------------------------------------- #
-addiu $t6, $zero, 2    # t6: 2
-addiu $t7, $zero, 3    # t7: 3
-addu $t8, $t6, $t7     # t8: 5
+addiu $s0, $zero, 2    # s0: 2
+addiu $s1, $zero, 3    # s1: 3
+addu $s2, $s0, $s1     # s2: 5
 
 # Her testes for MEM forwarding (lw/sw)
 # Status: PASS
