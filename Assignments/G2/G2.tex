@@ -81,8 +81,29 @@
 \vspace{0.5in}        % spacing between title/authors and abstract/toc
 \begin{multicols}{2}
 \begin{abstract}
-I følgende opgave er der blevet gennemarbejdet anden Godkendelsesopgaver i kurset Maskinarkitektur på Københavns Universitet. I opgaven beskriver vi hvordan vi implementerede en pipelined MIPS i programmet LogiSim. 
-???Hvad skriver man egentlig helt præcis i sådan et afsnit???
+\noindent Følgende beskriver løsning af G2 gruppeopgaven til maskinarkitektur
+på Københavns Universitet, samt forløbet af udarbejdelsen heraf.
+
+Ved at tage udgangspunkt i et simplere kredsløb, nemlig {\it single-cycle}
+kredsløbet, forsimplede vi omfanget af opgaven om, at bygge et {\it pipelined}
+processor kredsløb, som understøtter en delmængde af MIPS\footnote{MIPS -
+http://en.wikipedia.org/wiki/MIPS\_architecture} instruktionssættet.
+
+Efter vi havde en fungerende implementation af {\it single-cycle} kredsløbet,
+indførte vi {\it pipes}, som effektivt delte kredsløbet op i
+eksekveringsstadier, og herefter løste vi de introducerede {\it hazards} i
+logisk rækkefølge af deres forekomst.
+
+Under hver udbedring af hvert stadie opfulgte vi med at teste kredsløbet, og
+reitererede løsningen, om nødvendigt.
+
+Sidst opfulgte vi med omfattende tests af det endelige kredsløb, som sikrede
+os, at vi fange de sidste fejl.
+
+% I følgende opgave er der blevet gennemarbejdet anden godkendelsesopgaver i
+% kurset Maskinarkitektur på Københavns Universitet. I opgaven beskriver vi
+% hvordan vi implementerede en pipelined MIPS i programmet LogiSim. 
+% ??? Hvad skriver man egentlig helt præcis i sådan et afsnit ???
 \end{abstract}
 \vfill
 \columnbreak
