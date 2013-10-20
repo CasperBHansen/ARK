@@ -2,28 +2,28 @@
 
 %========== PACKAGES ==========%
 
-\usepackage{a4wide}                                % for a wider layout
-\usepackage{listings}                        % for code examples
-\usepackage{color}                                % for color declarations
-\usepackage{fancyhdr}
-\usepackage{float}                                % for the [H] position specifier
-\usepackage[utf8]{inputenc}                % for UTF-8 encoding
-\usepackage{lipsum}
-\usepackage{mips}                                % for MIPS syntax highlighting
-\usepackage{multicol}                        % for multicolumn layouts
+\usepackage{a4wide}                  % for a wider layout
+\usepackage[danish]{babel}           % for correct language
+\usepackage{color}                   % for color declarations
+\usepackage{fancyhdr}                % for layout and design
+\usepackage{float}                   % for the [H] position specifier
+\usepackage[utf8]{inputenc}          % for UTF-8 encoding
+\usepackage{listings}                % for code examples
+\usepackage{mips}                    % for MIPS syntax highlighting
+\usepackage{multicol}                % for multicolumn layouts
 
 
 %========== DEFINITIONS ==========%
 
 \definecolor{c_comment}{rgb}        {0.38, 0.62, 0.38}
 \definecolor{c_keyword}{rgb}        {0.10, 0.10, 0.81}
-\definecolor{c_identifier}{rgb}        {0.00, 0.00, 0.00}
-\definecolor{c_string}{rgb}                {0.50, 0.50, 0.50}
+\definecolor{c_identifier}{rgb}     {0.00, 0.00, 0.00}
+\definecolor{c_string}{rgb}         {0.50, 0.50, 0.50}
 
 
 %========== MACROS ==========%
 
-\newcommand{\figref[1]}{se Figure~\ref{#1}}        % use for referencing figures
+\newcommand{\figref[1]}{se Figur~\ref{#1}}  % use for referencing figures
 
 %========== SETTINGS ==========%
 
@@ -113,10 +113,13 @@ os, at vi fange de sidste fejl.
 \newpage
 \pagestyle{fancy}
 \section{Overview}
-Vi startede med at lave en single cycle, som vi lavede om til en pipeline, i nedenstående afsnit har vi forklaret processen fra single cycle til pipeline.
+Vi startede med at lave en single cycle, som vi lavede om til en pipeline, i
+nedenstående afsnit har vi forklaret processen fra single cycle til pipeline.
 
 \subsection{Instruction set}
-Vores pipelines instruktion set (\figref[fig:instruction-set]) er rimelig simpel og indeholder `kun' 14 instruktioner. På følgende tabel er disse instruktioner blevet beskrevet kort.
+Vores pipelines instruktionssæt (\figref[fig:instruction-set]) er rimelig
+simpelt og indeholder `kun' 14 instruktioner. På følgende tabel er disse
+instruktioner blevet beskrevet kort.
 
 \begin{figure}[H]
         \begin{multicols}{2}
@@ -179,7 +182,14 @@ Vores pipelines instruktion set (\figref[fig:instruction-set]) er rimelig simpel
 \end{figure}
 
 \subsection{``making of'' Single Cycle}
-Hvordan lavede vi Single Cycle
+Da vi mødtes første gang tog vi simpelthen udgangspunkt i et helt nyt
+kredsløb, og byggede et en fungerende {\it single-cycle} implementation af
+den delmængde af MIPS instruktionssættet, som vi skulle understøtte jvf.
+opgaveteksten i vores løsning.
+
+Vi fik således alle instruktioner til at virke korrekt på første dag, undtagen
+instruktionerne {\tt jal} og {\tt jr}. Disse blev implementeret umiddelbart
+dagen efter.
 
 \subsection{``making of'' Pipeline}
 Hvordan lavede vi pipeline, hvad ændrede vi fra Single Cycle
