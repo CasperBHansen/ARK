@@ -321,30 +321,63 @@ data i registrerne (\figref[fig:arithmetic-results]).
 \end{figure}
 \end{multicols}
 
-\subsection{Memory-reference operations}
-\begin{multicols}{2}
-\noindent ...
-\vfill
-\columnbreak
-...
-\lstset{language=[mips]Assembler}
-% \lstinputlisting{tests/memref.asm}
-...
-\end{multicols}
-
+\newpage
 \subsection{Branching operations}
 ...
 
-\subsubsection{Hazards}
+\subsubsection{Jumps}
 \begin{multicols}{2}
-\noindent ...
+\noindent I det følgende testes branching, {\tt jr} og {\tt jal}.
+\lstset{language=[mips]Assembler}
+\lstinputlisting{tests/branching.asm}
+Som det fremgår af register {\tt \$s2} kan vi se fejlen der opstår
+(\figref[fig:branch-results]).
 \vfill
 \columnbreak
-...
-\lstset{language=[mips]Assembler}
-% \lstinputlisting{tests/branching.asm}
-...
+\begin{figure}[H]
+	\center
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		{\tt \$zero} & $00000000$ & {\tt \$s0} & $00000004$ \\
+		\hline
+		{\tt \$at} & $00000000$ & {\tt \$s1} & $00000002$ \\
+		\hline
+		{\tt \$v0} & $00000000$ & {\tt \$s2} & $00000000$ \\
+		\hline
+		{\tt \$v1} & $00000000$ & {\tt \$s3} & $00000000$ \\
+		\hline
+		{\tt \$a0} & $00000000$ & {\tt \$s4} & $00000000$ \\
+		\hline
+		{\tt \$a1} & $00000000$ & {\tt \$s5} & $00000000$ \\
+		\hline
+		{\tt \$a2} & $00000000$ & {\tt \$s6} & $00000000$ \\
+		\hline
+		{\tt \$a3} & $00000000$ & {\tt \$s7} & $00000000$ \\
+		\hline
+		{\tt \$t0} & $00000000$ & {\tt \$t8} & $00000000$ \\
+		\hline
+		{\tt \$t1} & $00000000$ & {\tt \$t9} & $00000000$ \\
+		\hline
+		{\tt \$t2} & $00000000$ & {\tt \$k0} & $00000000$ \\
+		\hline
+		{\tt \$t3} & $00000000$ & {\tt \$k1} & $00000000$ \\
+		\hline
+		{\tt \$t4} & $00000000$ & {\tt \$gp} & $00000000$ \\
+		\hline
+		{\tt \$t5} & $00000000$ & {\tt \$sp} & $00000000$ \\
+		\hline
+		{\tt \$t6} & $00000000$ & {\tt \$fp} & $00000000$ \\
+		\hline
+		{\tt \$t7} & $00000000$ & {\tt \$ra} & $00000016$ \\
+		\hline
+	\end{tabular}
+	\caption{Forventede branch resultater}
+	\label{fig:branch-results}
+\end{figure}
 \end{multicols}
+
+\subsubsection{Branch Hazards/Forwarding}
+...
 
 \newpage
 \pagestyle{fancy}
