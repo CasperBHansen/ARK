@@ -255,49 +255,13 @@ Har vi noget der ikke virker og hvordan har vi tænkt os at implimentere det.
 \newpage
 \pagestyle{fancy}
 \section{Tests}
-Lige til, dog skal vi lave nogle gode test. Lad os komme med nogle nice ideer og så skrive hvordan de virker og giv resultatet. Husk forventet output og faktisk output.
-\begin{figure}[h!]
-        \begin{tabular}{ | l | l | l | l |}
-                \hline
-                $ .\$ 0$ & $00000000$  &  $ .\$ 16$ & $00000000$ \\
-                \hline
-                $ .\$ 1$ & $00000000$  &  $ .\$ 17$ & $00000000$ \\
-                \hline
-                $ .\$ 2$ & $00000000$  &  $ .\$ 18$ & $00000000$ \\
-                \hline
-                $ .\$ 3$ & $00000000$  &  $ .\$ 19$ & $00000000$ \\
-                \hline
-                $ .\$ 4$ & $00000000$  &  $ .\$ 20$ & $00000000$ \\
-                \hline
-                $ .\$ 5$ & $00000000$  &  $ .\$ 21$ & $00000000$ \\
-                \hline
-                $ .\$ 6$ & $00000000$  &  $ .\$ 22$ & $00000000$ \\
-                \hline
-                $ .\$ 7$ & $00000000$  &  $ .\$ 23$ & $00000000$ \\
-                \hline
-                $ .\$ 8$ & $00000000$  &  $ .\$ 24$ & $00000000$ \\
-                \hline
-                $ .\$ 9$ & $00000000$  &  $ .\$ 25$ & $00000000$ \\
-                \hline
-                $ .\$ 10$ & $00000000$  &  $ .\$ 26$ & $00000000$ \\
-                \hline
-                $ .\$ 11$ & $00000000$  &  $ .\$ 27$ & $00000000$ \\
-                \hline
-                $ .\$ 12$ & $00000000$  &  $ .\$ 28$ & $00000000$ \\
-                \hline
-                $ .\$ 13$ & $00000000$  &  $ .\$ 29$ & $00000000$ \\
-                \hline
-                $ .\$ 14$ & $00000000$  &  $ .\$ 30$ & $00000000$ \\
-                \hline
-                $ .\$ 15$ & $00000000$  &  $ .\$ 31$ & $00000000$ \\
-                \hline
-        \end{tabular}
-        \caption{Forventet resultat}
-        \label{fig:resultat0}
-\end{figure}
+Herunder vil vi foretage en gennemgang af de tests vi har udført på
+kredsløbet iht. de forventede resultater, og sammenligningen deraf.
 
 \subsection{Aritmetiske og logiske operationer}
-Ved at sammenligne 
+Ved at sammenligne de to registrer, som bruges ved et aritmetisk eller logisk
+operation med de som allerede ligger i {\it pipen} kan vi forudse, om disse
+bør anvendes istedet for --- altså forwarding.
 
 \begin{multicols}{2}
 \noindent I det følgende udregnes $((3+4)+7)-3$.
@@ -309,37 +273,37 @@ Ved at sammenligne
 	\center
 	\begin{tabular}{|l|l|l|l|}
 		\hline
-		$ .\$zero$ & $00000000$  &  $ .\$s0$ & $00000000$ \\
+		{\tt \$zero} & $00000000$ & {\tt \$s0} & $00000000$ \\
 		\hline
-		$ .\$at$ & $00000000$  &  $ .\$s1$ & $00000000$ \\
+		{\tt \$at} & $00000000$ & {\tt \$s1} & $00000000$ \\
 		\hline
-		$ .\$v0$ & $00000000$  &  $ .\$s2$ & $00000000$ \\
+		{\tt \$v0} & $00000000$ & {\tt \$s2} & $00000000$ \\
 		\hline
-		$ .\$v1$ & $00000000$  &  $ .\$s3$ & $00000000$ \\
+		{\tt \$v1} & $00000000$ & {\tt \$s3} & $00000000$ \\
 		\hline
-		$ .\$a0$ & $00000000$  &  $ .\$s4$ & $00000000$ \\
+		{\tt \$a0} & $00000000$ & {\tt \$s4} & $00000000$ \\
 		\hline
-		$ .\$a1$ & $00000000$  &  $ .\$s5$ & $00000000$ \\
+		{\tt \$a1} & $00000000$ & {\tt \$s5} & $00000000$ \\
 		\hline
-		$ .\$a2$ & $00000000$  &  $ .\$s6$ & $00000000$ \\
+		{\tt \$a2} & $00000000$ & {\tt \$s6} & $00000000$ \\
 		\hline
-		$ .\$a3$ & $00000000$  &  $ .\$s7$ & $00000000$ \\
+		{\tt \$a3} & $00000000$ & $ .\$s7$ & $00000000$ \\
 		\hline
-		$ .\$t0$ & $00000000$  &  $ .\$t8$ & $00000000$ \\
+		{\tt \$t0} & $00000000$ & $ .\$t8$ & $00000000$ \\
 		\hline
-		$ .\$t1$ & $00000000$  &  $ .\$t9$ & $00000000$ \\
+		{\tt \$t1} & $00000000$ & $ .\$t9$ & $00000000$ \\
 		\hline
-		$ .\$t2$ & $00000000$  &  $ .\$k0$ & $00000000$ \\
+		{\tt \$t2} & $00000000$ & $ .\$k0$ & $00000000$ \\
 		\hline
-		$ .\$t3$ & $00000000$  &  $ .\$k1$ & $00000000$ \\
+		{\tt \$t3} & $00000000$ & $ .\$k1$ & $00000000$ \\
 		\hline
-		$ .\$t4$ & $00000000$  &  $ .\$gp$ & $00000000$ \\
+		{\tt \$t4} & $00000000$ & $ .\$gp$ & $00000000$ \\
 		\hline
-		$ .\$t5$ & $00000000$  &  $ .\$sp$ & $00000000$ \\
+		{\tt \$t5} & $00000000$ & $ .\$sp$ & $00000000$ \\
 		\hline
-		$ .\$t6$ & $00000000$  &  $ .\$fp$ & $00000000$ \\
+		{\tt \$t6} & $00000000$ & $ .\$fp$ & $00000000$ \\
 		\hline
-		$ .\$t7$ & $00000000$  &  $ .\$ra$ & $00000000$ \\
+		{\tt \$t7} & $00000000$ & $ .\$ra$ & $00000000$ \\
 		\hline
 	\end{tabular}
 	\caption{Forventet resultat}
