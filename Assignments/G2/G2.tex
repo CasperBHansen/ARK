@@ -216,37 +216,40 @@ skulle tænke så meget over {\it branch-delay slot}, i og med, at den følgende
 {\it fetched} instruktion gerne skulle udføres, men PC derefter er blevet
 ændret til {\it branch}-adressen.
 
-Da disse indledende fejl var blevet reduceret og vi fik et overskueligt
-overblik over kredsløbet igen, påbegyndte vi at tage os af {\it hazards},
-hvoraf vi tog os af de nemmeste og mest åbenlyse problemer først, herunder;
-forwarding for de aritmetiske operationer (eg. {\tt addiu} og {\tt subu}),
-og derefter {\it hazard-detection} og {\it stall} for {\it memory} operationer
-(eg. {\tt sw} og {\tt lw}).
+\subsection{Forwarding og Hazard Detection}
+Da de indledende fejl fra konverteringen var blevet reduceret og vi fik et
+overskueligt overblik over kredsløbet igen, påbegyndte vi at tage os af
+{\it hazards}, hvoraf vi tog os af de nemmeste og mest åbenlyse problemer
+først, herunder; forwarding for de aritmetiske operationer (eg. {\tt addiu}
+og {\tt subu}), og derefter {\it hazard-detection} og {\it stall} for
+{\it memory} operationer (eg. {\tt sw} og {\tt lw}).
 
-Til sidst tog vi os af {\it jumps} og {\it branches}, hvilket viste sig at være mere udfordrende
-end først antaget, og også årsagen til, at vi må erkende, at vores kredsløb
-har nogle fejl på dette område.
+Til sidst tog vi os af {\it jumps} og {\it branches}, hvilket viste sig at
+være mere udfordrende end først antaget, og også årsagen til, at vi må
+erkende, at vores kredsløb har nogle fejl på dette område.
 
-For det første er {\it jal} implementeret sådan, at ID trinnet håndterer både hvilken værdi
-der skal skrives i returregistret (sendt direkte fra IF trinnet), samt signalet til rent faktisk at
-skrive. Dette har den ulempe, at hvis en instruktion senere i pipen (fx. en addu) forsøger at
-skrive til registret, vil dette være 'optaget' og det vil kun være retur-addressen der bliver
-skrevet. Dette kunne muligvis løses ved hazard detection, der kunne stalle hele pipelinen
-et enkelt trin, så begge værdier kunne nå at blive skrevet. Dette har vi desværre ikke nået
-at implementere. Bortset fra denne ulempe fungerer jal dog som den skal.
+For det første er {\tt jal} implementeret sådan, at {\tt ID}-trinnet
+håndterer både hvilken værdi der skal skrives i returregistret (sendt direkte
+fra {\tt IF}-trinnet), samt signalet til rent faktisk at skrive. Dette har
+den ulempe, at hvis en instruktion senere i pipen (fx. en {\tt addu}) forsøger
+at skrive til registret, vil dette være 'optaget' og det vil kun være
+retur-addressen der bliver skrevet. Dette kunne muligvis løses ved {\it hazard
+detection}, der kunne stalle hele pipelinen et enkelt trin, så begge værdier
+kunne nå at blive skrevet. Dette har vi desværre ikke nået at implementere.
+Bortset fra denne ulempe fungerer {\tt jal} dog som den skal.
 
-Derudover er jr også implementeret uden hazard detection og forwaring, hvilket medfører
-at en instruktion der forsøger at skrive til register 31 (ra), ikke vil nå igennem pipen før jr udføres.
-Hvis man her antager at assembler-programmøren følger MIPS konventionen og kun skriver til ra
-med jal, vil dette ikke blive et problem, eftersom jal allerede skriver til registret i ID trinnet.
-
-\subsection{``making of'' forwarding og hazard detektion}
-Hvordan lavede viforwarding og hazard detektion, hvad ændrede vi fra Pipeline
+Derudover er {\tt jr} også implementeret uden {\it hazard detection} og
+{\it forwarding}, hvilket medfører at en instruktion der forsøger at skrive
+til register {\tt \$31} ({\tt \$ra}), ikke vil nå igennem pipen før {\tt jr}
+udføres. Hvis man her antager, at assembler-programmøren følger MIPS
+konventionen og kun skriver til {\tt \$ra} med {\tt jal}, vil dette ikke
+blive et problem, eftersom {\tt jal} allerede skriver til registret i
+{\tt ID}-trinnet.
 
 \subsection{Done og virker}
 hvad virker og hvorfor virker det (aka se test)
 
-\subsection{fejl og manlger}
+\subsection{Fejl og mangler}
 Har vi noget der ikke virker og hvordan har vi tænkt os at implimentere det.
 
 \newpage
@@ -302,7 +305,7 @@ Lige til, dog skal vi lave nogle gode test. Lad os komme med nogle nice ideer og
 \columnbreak
 ...
 \lstset{language=[mips]Assembler}
-\lstinputlisting{tests/arithmetic.asm}
+% \lstinputlisting{tests/arithmetic.asm}
 ...
 \end{multicols}
 
@@ -313,7 +316,7 @@ Lige til, dog skal vi lave nogle gode test. Lad os komme med nogle nice ideer og
 \columnbreak
 ...
 \lstset{language=[mips]Assembler}
-\lstinputlisting{tests/memref.asm}
+% \lstinputlisting{tests/memref.asm}
 ...
 \end{multicols}
 
@@ -327,7 +330,7 @@ Lige til, dog skal vi lave nogle gode test. Lad os komme med nogle nice ideer og
 \columnbreak
 ...
 \lstset{language=[mips]Assembler}
-\lstinputlisting{tests/branching.asm}
+% \lstinputlisting{tests/branching.asm}
 ...
 \end{multicols}
 
