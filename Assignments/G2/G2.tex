@@ -214,9 +214,22 @@ forwarding for de aritmetiske operationer (eg. {\tt addiu} og {\tt subu}),
 og derefter {\it hazard-detection} og {\it stall} for {\it memory} operationer
 (eg. {\tt sw} og {\tt lw}).
 
-Til sidst tog vi os af {\it jumps}, hvilket viste sig at være mere udfordrende
+Til sidst tog vi os af {\it jumps} og {\it branches}, hvilket viste sig at være mere udfordrende
 end først antaget, og også årsagen til, at vi må erkende, at vores kredsløb
-har nogle fejl på dette område. [afklar hvilke fejl?]
+har nogle fejl på dette område.
+
+For det første er {\it jal} implementeret sådan, at ID trinnet håndterer både hvilken værdi
+der skal skrives i returregistret (sendt direkte fra IF trinnet), samt signalet til rent faktisk at
+skrive. Dette har den ulempe, at hvis en instruktion senere i pipen (fx. en addu) forsøger at
+skrive til registret, vil dette være 'optaget' og det vil kun være retur-addressen der bliver
+skrevet. Dette kunne muligvis løses ved hazard detection, der kunne stalle hele pipelinen
+et enkelt trin, så begge værdier kunne nå at blive skrevet. Dette har vi desværre ikke nået
+at implementere. Bortset fra denne ulempe fungerer jal dog som den skal.
+
+Derudover er jr også implementeret uden hazard detection og forwaring, hvilket medfører
+at en instruktion der forsøger at skrive til register 31 (ra), ikke vil nå igennem pipen før jr udføres.
+Hvis man her antager at assembler-programmøren følger MIPS konventionen og kun skriver til ra
+med jal, vil dette ikke blive et problem, eftersom jal allerede skriver til registret i ID trinnet.
 
 \subsection{``making of'' forwarding og hazard detektion}
 Hvordan lavede viforwarding og hazard detektion, hvad ændrede vi fra Pipeline
