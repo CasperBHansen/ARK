@@ -246,6 +246,14 @@ konventionen og kun skriver til {\tt \$ra} med {\tt jal}, vil dette ikke
 blive et problem, eftersom {\tt jal} allerede skriver til registret i
 {\tt ID}-trinnet.
 
+Til gengæld er har vi indført en seperat hazard detection unit for branches,
+der sørger for at stalle pipelinen, hvis branch operationen afhænger af endnu
+ikke produceret output. For eksempel vil pipelinen blive stallet to gange i
+tilfælde af at branch operationen afhænger af en lw operation i instruktionen
+netop før branchen. Det har også været nødvendigt med endnu en forwarding
+unit i ID trinnet, udelukkende til branches, som sørger for at hente fx. adds
+elle lignende tilbage til branch operationen.
+
 \subsection{Done og virker}
 hvad virker og hvorfor virker det (aka se test)
 
