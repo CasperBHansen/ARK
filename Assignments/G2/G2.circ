@@ -290,7 +290,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(1160,430)" to="(1160,440)"/>
     <wire from="(1160,290)" to="(1160,320)"/>
     <wire from="(1660,790)" to="(1700,790)"/>
-    <wire from="(80,350)" to="(90,350)"/>
     <wire from="(650,770)" to="(700,770)"/>
     <wire from="(1960,630)" to="(2010,630)"/>
     <wire from="(1840,300)" to="(1970,300)"/>
