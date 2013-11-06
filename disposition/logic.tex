@@ -1,0 +1,86 @@
+%
+% logic.tex
+%
+
+\section{Digital Logic}
+Here we list the different gates used to piece together circuits.
+
+\usetikzlibrary{arrows,positioning}
+\begin{multicols}{4}
+	
+	\begin{figure}[H]
+		\center
+%		\begin{tikzpicture}
+%		[
+%			align=center,
+%			input/.style={rectangle,draw=black,fill=none},
+%			output/.style={circle,draw=black,fill=none},
+%			arrow/.style=
+%			{
+%				->,
+%				thick,
+%				shorten <=2pt,
+%				shorten >=2pt,
+%			},
+%		]
+%			\node[input] 	(A) at 	( 0.0, -0.5 ) {A};
+%			\node[input] 	(B) at 	( 0.0,  0.5 ) {B};
+%			\node[output] 	(C) at 	( 3.0,  0.0 ) {C};
+%			
+%			\draw ( 1.0, -0.5 ) to ( 2.0, -0.5 );
+%			
+%		\end{tikzpicture}
+%		\\{\ }\\
+		\begin{tabular}{c|cc}
+			$\land$ & 0 & 1 \\ \hline
+			0 & 0 & 0 \\
+			1 & 0 & 1
+		\end{tabular}
+		\label{table:and-gate}
+		\caption{Truth table of the AND-gate}
+	\end{figure}
+	
+	\vfill
+	\columnbreak
+			
+	\begin{figure}[H]
+		\center
+		\begin{tabular}{c|cc}
+			$\lor$ & 0 & 1 \\ \hline
+			0 & 0 & 1 \\
+			1 & 1 & 1
+		\end{tabular}
+		\label{table:or-gate}
+		\caption{Truth table of the OR-gate}
+	\end{figure}
+	
+	\vfill
+	\columnbreak
+
+	\begin{figure}[H]
+		\center
+		\begin{tabular}{c|cc}
+			$\neg\land$ & 0 & 1 \\ \hline
+			0 & 1 & 1 \\
+			1 & 1 & 0
+		\end{tabular}
+		\label{table:nand-gate}
+		\caption{Truth table of the NAND-gate.}
+	\end{figure}
+	
+	\vfill
+	\columnbreak
+
+	\begin{figure}[H]
+		\center
+		\begin{tabular}{c|c}
+			$\neg$ & {\ } \\ \hline
+			0 & 1 \\
+			1 & 0
+		\end{tabular}
+		\label{table:not-gate}
+		\caption{Truth table of the NOT-gate.}
+	\end{figure}
+	
+\end{multicols}
+
